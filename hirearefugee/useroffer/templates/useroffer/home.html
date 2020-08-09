@@ -1,0 +1,41 @@
+{% extends "useroffer/base.html" %}
+
+{% block content %}
+<br>
+    <br>
+    <br>
+    <br>
+<div class="row justify-content-center mt-5">
+    <div class="col-md-7 text-center">
+        <h1 style="color:rgb(14, 168, 179)">Hire A Refugee!</h1>
+        <p>
+            If you need work done, we can do it, and we are eager to perform. 
+            With a cavalcade of talented and skilled workers, we are looking to establish a place where Syrian refugees, and other newcomers, have an opportunity to earn a living through honest, hard work. 
+            All profits go back to helping refugee families.
+            <br>
+            <h5 style="color:rgb(14, 168, 179)">We are a non-profit organization</h5>
+            <h5 style="color:rgb(14, 168, 179)">We do not run adds</h5>
+            <h5 style="color:rgb(14, 168, 179)">We do not sell personal information</h5>
+            <h5 style="color:rgb(14, 168, 179)">We do not track you on this site</h5>
+            <h5 style="color:rgb(14, 168, 179)">Our code is open-source</h5>
+            <br>
+        </p>
+        <a role="button" class="btn btn-info btn-lg" href="{% url 'signupuser' %}">Come join us!</a>
+        </div>
+    </div>
+
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+    <img src="..." class="rounded mr-2" alt="...">
+    <strong class="mr-auto">Bootstrap</strong>
+    <small>11 mins ago</small>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>
+
+<!-- Learn more block -->
+<!-- https://getbootstrap.com/docs/4.5/components/scrollspy/#list-item-2 -->
+
+{% endblock %}

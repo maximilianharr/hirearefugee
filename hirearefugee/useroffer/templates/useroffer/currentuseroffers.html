@@ -1,0 +1,30 @@
+{% extends "useroffer/base.html" %}
+
+{% block content %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            {% if useroffers %}
+                 <h1>{{ useroffers.count }} Current UserOffer{{ useroffers.count|pluralize }}</h1>
+            {% else %}
+                           <h1>Current UserOffers</h1>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+        {% if useroffers %}
+            <div class="list-group">
+                {% for useroffer in useroffers %}
+                    <a href="{% url 'viewuseroffer' useroffer.id %}" class="list-group-item list-group-item-action{% if useroffer.important %} list-group-item-danger{% endif %}"><b>{{ useroffer.title }}</b>{% if useroffer.memo %} - {{ useroffer.memo|truncatechars:30 }}{% endif %}</a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center">
+                <h2>Looks like you don't have any useroffers! Nice work.</h2>
+            <br>
+            <a role="button" class="btn btn-primary" href="{% url 'createuseroffer' %}">New UserOffer</a>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}
