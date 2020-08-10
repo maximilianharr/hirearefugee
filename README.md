@@ -52,3 +52,7 @@ python3 manage.py createsuperuser
 ## Contribution
 
 ## License
+
+## License
+
+[Apache License 2.0](LICENSE)
