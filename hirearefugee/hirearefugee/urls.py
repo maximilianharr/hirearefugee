@@ -26,12 +26,15 @@ urlpatterns = [
     # Blog
     path('blog/', include('blog.urls')),
 
-    # Support
-    path('support/', include('support.urls')),
-
     # Home
     path('', home_views.home, name='home'),
     path('home/', include('home.urls')),
+
+    # Message
+    path('message/', include('message.urls')),
+
+    # Support
+    path('support/', include('support.urls')),
 
     # Geospatial Data
     path('world/', include('world.urls')),
