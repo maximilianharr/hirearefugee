@@ -40,12 +40,12 @@
         </div>
     </div>
     {% if useroffer.datecompleted is None %}
-        <form style='display: none;' method="POST" action="{% url 'completeuseroffer' useroffer.id %}">
+        <form style='display: none;' method="POST" action="{% url 'useroffer:completeuseroffer' useroffer.id %}">
             {% csrf_token %}
             <button id="complete" type="submit">Complete</button>
         </form>
     {% endif %}
-    <form style='display: none;' method="POST" action="{% url 'deleteuseroffer' useroffer.id %}">
+    <form style='display: none;' method="POST" action="{% url 'useroffer:deleteuseroffer' useroffer.id %}">
         {% csrf_token %}
         <button id="delete" type="submit">Delete</button>
     </form>

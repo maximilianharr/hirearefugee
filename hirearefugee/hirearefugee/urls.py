@@ -14,39 +14,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from home import views as home_views
-from support import views as support_views
-from userauth import views as userauth_views
-from useroffer import views as useroffer_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     # Auth
-    path('userauth/signup/', userauth_views.signupuser, name='signupuser'),
-    path('userauth/login/', userauth_views.loginuser, name='loginuser'),
-    path('userauth/logout/', userauth_views.logoutuser, name='logoutuser'),
+    path('userauth/', include('userauth.urls')),
 
     # Support
-    path('support/becomeamember', support_views.becomeamember, name='becomeamember'),
-    path('support/donate', support_views.donate, name='donate'),
-    path('support/helpcoding', support_views.helpcoding, name='helpcoding'),
-    path('support/sponsors', support_views.sponsors, name='sponsors'),
-    path('support/spreadtheword', support_views.spreadtheword, name='spreadtheword'),
-    path('support/thanks', support_views.thanks, name='thanks'),
+    path('support/', include('support.urls')),
 
     # Home
     path('', home_views.home, name='home'),
-    path('home/', home_views.home, name='home'),
-    path('home/about/', home_views.about, name='about'),
-    path('home/testhtml/', home_views.testhtml, name='testhtml'),
+    path('home/', include('home.urls')),
 
     # UserOffers
-    path('create/', useroffer_views.createuseroffer, name='createuseroffer'),
-    path('current/', useroffer_views.currentuseroffers, name='currentuseroffers'),
-    path('completed/', useroffer_views.completeduseroffers, name='completeduseroffers'),
-    path('useroffer/<int:useroffer_pk>', useroffer_views.viewuseroffer, name='viewuseroffer'),
-    path('useroffer/<int:useroffer_pk>/complete', useroffer_views.completeuseroffer, name='completeuseroffer'),
-    path('useroffer/<int:useroffer_pk>/delete', useroffer_views.deleteuseroffer, name='deleteuseroffer'),
+    path('useroffer/', include('useroffer.urls')),
 ]

@@ -10,7 +10,7 @@
         <div class="col-md-10">
             <div class="list-group">
                 {% for useroffer in useroffers %}
-                    <a href="{% url 'viewuseroffer' useroffer.id %}" class="list-group-item list-group-item-action{% if useroffer.important %} list-group-item-danger{% endif %}"><b>{{ useroffer.title }}</b> - Completed {{ useroffer.datecompleted|date:'M j Y H:i' }}</a>
+                    <a href="{% url 'useroffer:viewuseroffer' useroffer.id %}" class="list-group-item list-group-item-action{% if useroffer.important %} list-group-item-danger{% endif %}"><b>{{ useroffer.title }}</b> - Completed {{ useroffer.datecompleted|date:'M j Y H:i' }}</a>
                 {% endfor %}
             </div>
         </div>
