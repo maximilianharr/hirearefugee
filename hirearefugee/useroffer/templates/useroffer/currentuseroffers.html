@@ -1,30 +1,36 @@
 {% extends "home/base.html" %}
 
 {% block content %}
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-10">
-            {% if useroffers %}
-                 <h1>{{ useroffers.count }} Current UserOffer{{ useroffers.count|pluralize }}</h1>
-            {% else %}
-                           <h1>Current UserOffers</h1>
-            {% endif %}
-        </div>
-    </div>
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-10">
+<div class="row justify-content-center mt-5">
+    <div class="col-md-10">
         {% if useroffers %}
-            <div class="list-group">
-                {% for useroffer in useroffers %}
-                    <a href="{% url 'useroffer:viewuseroffer' useroffer.id %}" class="list-group-item list-group-item-action{% if useroffer.important %} list-group-item-danger{% endif %}"><b>{{ useroffer.title }}</b>{% if useroffer.memo %} - {{ useroffer.memo|truncatechars:30 }}{% endif %}</a>
-                {% endfor %}
-            </div>
+            <h1>Your Current Offer{{ useroffers.count|pluralize }}</h1>
         {% else %}
-            <div class="text-center">
-                <h2>Looks like you don't have any useroffers! Nice work.</h2>
-            <br>
-            <a role="button" class="btn btn-primary" href="{% url 'useroffer:createuseroffer' %}">New UserOffer</a>
-            </div>
+            <h1>No Current Offers Yet</h1>
         {% endif %}
-        </div>
     </div>
+</div>
+<div class="row justify-content-center mt-5">
+    <div class="col-md-10">
+    {% if useroffers %}
+        <div class="list-group">
+            {% for useroffer in useroffers %}
+                <a href="{% url 'useroffer:viewuseroffer' useroffer.id %}" class="list-group-item list-group-item-action{% if useroffer.important %} list-group-item-info{% endif %}"><b>{{ useroffer.title }}</b>{% if useroffer.memo %} - {{ useroffer.memo|truncatechars:30 }}{% endif %}</a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="text-center">
+            <h2>Looks like you don't have any useroffers! Nice work.</h2>
+        <br>
+        <a role="button" class="btn btn-primary" href="{% url 'useroffer:createuseroffer' %}">New UserOffer</a>
+        </div>
+    {% endif %}
+    </div>
+</div>
+
+<!-- button -->
+<div class="row justify-content-center mt-5">
+    <a class="btn btn-info btn-lg" href="{% url 'useroffer:createuseroffer' %}" role="button">Create</a>
+</div>
+
 {% endblock %}

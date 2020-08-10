@@ -1,5 +1,4 @@
 {% load static %}
-<!doctype html>
 <html lang="en">
 
 <!-- Important Note (e.g. Alpha Testing) -->
@@ -40,6 +39,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'home:about' %}">About Us</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog:blog' %}">Blog</a>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Support Us
@@ -65,22 +67,22 @@
                         <img src="{% static 'home/icons/Heart Dark_000000.png' %}" width="20" height="20" class="d-inline-block align-top">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Help</a>
-                        <a class="dropdown-item" href="#">Jobs</a>
-                        <a class="dropdown-item" href="#">Teaching</a>
+                        <a class="dropdown-item" href="{% url 'useroffer:createuseroffer' %}">Create An Offer</a>
+                        <a class="dropdown-item" href="{% url 'useroffer:currentuseroffers' %}">My Offers</a>
+                        <a class="dropdown-item" href="{% url 'useroffer:completeduseroffers' %}">Completed Offers</a>
                       </div>
                 </li>
 
                 <!-- Map -->
                 <li class="nav-item">
-                    <a href="#" onclick="$('#').click()" class="nav-link">
+                    <a href="{% url 'world:map' %}" class="nav-link">
                         <img src="{% static 'home/icons/Map location_000000.png' %}" width="20" height="20" class="d-inline-block align-top">
                     </a>
                 </li>
 
                 <!-- Home -->
                 <li class="nav-item">
-                    <a href="#" onclick="$('#').click()" class="nav-link">
+                    <a href="{% url 'home:community' %}" class="nav-link">
                         <img src="{% static 'home/icons/Nice_House_Icon_0000ff.png' %}" width="20" height="20" class="d-inline-block align-top">
                     </a>
                 </li>
@@ -94,7 +96,7 @@
 
                 <!-- Settings -->
                 <li class="nav-item">
-                    <a href="#" onclick="$('#').click()" class="nav-link">
+                    <a href="{% url 'home:settings' %}" class="nav-link">
                         <img src="{% static 'home/icons/Gear_000000.png' %}" width="20" height="20" class="d-inline-block align-top">
                     </a>
                 </li>
@@ -133,48 +135,9 @@
 </nav>
 
 <!-- Vertival line -->
-<hr style="height:0.5px; background-color:rgb(200, 200, 200); margin-top: 0.0rem;">
+<hr style="height:0.5px; background-color:rgb(255, 255, 255); margin-top: 0.0rem; margin-bottom: 0.0rem;">
 
-{% if user.is_authenticated %}
-<!-- Stack the columns on mobile by making one full-width and the other half-width -->
-<div class="row">
-    <!-- Left grid -->
-    <div class="col-12 col-md-8">
-{% else %}
-<div class="container">
-{% endif %}
-        {% block content %}{% endblock %}
-{% if user.is_authenticated %}
-    </div>
-    <!-- Right grid -->
-    <div class="col-6 col-md-4">
-  
-      <!-- upper right grid -->
-      <!-- A vertical navbar (User Settings) -->
-      <nav class="navbar bg-light navbar-light">
-    
-      <ul class="navbar-nav">
-        <li class="nav-item {{ current }}">
-            <a class="nav-link" href="{% url 'useroffer:currentuseroffers' %}">Current</a>
-        </li>
-        <li class="nav-item {{ completed }}">
-            <a class="nav-link" href="{% url 'useroffer:completeduseroffers' %}">Completed</a>
-        </li>
-        <li class="nav-item {{ create }}">
-            <a class="nav-link" href="{% url 'useroffer:createuseroffer' %}">Create</a>
-        </li>   
-      </ul>
-    </nav> 
- 
-      <!-- Lower right grid (Links) -->
-      <nav class="navbar navbar-light bg-light">
-        <span class="navbar-text">
-          About - Home
-        </span>
-      </nav>
-  </div>
-{% endif %}
-</div>
+{% block content %}{% endblock %}
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -23,12 +23,18 @@ urlpatterns = [
     # Auth
     path('userauth/', include('userauth.urls')),
 
+    # Blog
+    path('blog/', include('blog.urls')),
+
     # Support
     path('support/', include('support.urls')),
 
     # Home
     path('', home_views.home, name='home'),
     path('home/', include('home.urls')),
+
+    # Geospatial Data
+    path('world/', include('world.urls')),
 
     # UserOffers
     path('useroffer/', include('useroffer.urls')),

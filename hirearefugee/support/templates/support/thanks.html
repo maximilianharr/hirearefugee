@@ -1,6 +1,7 @@
 {% extends "home/base.html" %}
 
 {% block content %}
+{% load static %}
 
 Our Sponsors
 
@@ -17,11 +18,73 @@ django
 Geodjango
 openlayers.org
 
+docker
+github
+
 django course
 Nick Walter https://www.udemy.com/share/102yDMBEEbclpXRnw=/ 
 
 DeepL
 https://www.deepl.com/
+
+
+
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-7 text-center">
+        <h3 style="color:rgb(14, 168, 179)">Media</h3>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+      
+        <div class="col">
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'home/icons/Shake_Hands_Icon_0ea8b3.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <p class="card-text">
+                    Description
+                </p>
+            </div>
+        </div>
+        </div>
+        
+        <div class="col">
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'home/icons/Shake_Hands_Icon_0ea8b3.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <p class="card-text">
+                    Description
+                </p>
+            </div>
+        </div>
+        </div>
+        
+        <div class="col">
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'home/icons/Shake_Hands_Icon_0ea8b3.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <p class="card-text">
+                    Description
+                </p>
+            </div>
+        </div>
+        </div>
+        
+        <div class="col">
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'home/icons/Shake_Hands_Icon_0ea8b3.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <p class="card-text">
+                    Description
+                </p>
+            </div>
+        </div>
+        </div>
+
+    </div>
+  </div>
 
 
 
