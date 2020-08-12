@@ -1,16 +1,15 @@
 #!/bin/bash
-RED='\033[0;31m'
+GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
 # Greetings
 printf "${NC}--------------------------------------------------${NC}\n"
-printf "${RED}Hello $(whoami)! Welcome to $(hostname -s)!${NC}\n"
+printf "${GREEN}Hello $(whoami)! Welcome to $(hostname -s)!${NC}\n"
 printf "${NC}--------------------------------------------------${NC}\n"
 
-# Commands
+# Init
 WEBSERVER_DIR=/home/$(whoami)/workspace/hirearefugee
 source ${WEBSERVER_DIR}/setup.bash
 
-printf "${RED} Success ${NC}\n"
-
+# Run Webserver
 python3 ${WEBSERVER_DIR}/hirearefugee/manage.py runserver 0.0.0.0:8000

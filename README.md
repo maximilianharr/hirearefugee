@@ -6,22 +6,32 @@ Follow us on [Instagram](https://www.instagram.com/hirearefugee/) or join our [G
 This is a django webserver which provides a platform to help refugees to get a job and in contact with their local community.  
 
 ## Getting Started With Docker (Recommended)
+
+### Installation
 Clone repository
 ```bash
 mkdir -p ${HOME}/workspace
 cd ${HOME}/workspace
 git clone https://github.com/maximilianharr/hirearefugee.git hirearefugee
+docker build -t ${HOME}/workspace/hirearefugee/docker/india india
 ```
 
+### Start Django Server Locally
 Build docker container and run
 ```bash
-docker build -t ${HOME}/workspace/hirearefugee/docker/india india
 docker run --user gandhi --publish 8000:8000 --volume ${HOME}/workspace:/home/gandhi/workspace -h india -it hirearefugee/india bash
 ```
 
 Open the webserver in Firefox
 ```bash
 firefox http://localhost:8000/
+```
+
+### Working
+Open bash in running docker container (e.g. to create new apps)
+```bash
+docker container ls
+docker exec -it ${CONTAINER_ID} /bin/bash
 ```
 
 ## Getting Started Without Docker

@@ -11,13 +11,15 @@ def signupuser(request):
         return render(request, 'userauth/signupuser.html', {'form':UserCreationForm()})
     else:
         if request.POST['password1'] == request.POST['password2']:
-            try:
-                user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
-                user.save()
-                login(request, user)
-                return redirect('home')
-            except IntegrityError:
-                return render(request, 'userauth/signupuser.html', {'form':UserCreationForm(), 'error':'That username has already been taken. Please choose a new username'})
+            # @todo undo try/except (leave for now due to debugging purposes)
+            #try:
+            # Add user to DB and login
+            user = User.objects.create_user(request.POST['username'], email=request.POST['email'], password=request.POST['password1'])
+            user.save()
+            login(request, user)
+            return redirect('home')
+            #except IntegrityError:
+            #    return render(request, 'userauth/signupuser.html', {'form':UserCreationForm(), 'error':'That username has already been taken. Please choose a new username'})
         else:
             return render(request, 'userauth/signupuser.html', {'form':UserCreationForm(), 'error':'Passwords did not match'})
 

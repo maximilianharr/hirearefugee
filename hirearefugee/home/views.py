@@ -11,9 +11,5 @@ def community(request):
 def home(request):
     return render(request, 'home/home.html')
 
-@login_required
-def settings(request):
-    return render(request, 'home/settings.html')
-
 def testhtml(request):
     return render(request, 'home/testhtml.html')

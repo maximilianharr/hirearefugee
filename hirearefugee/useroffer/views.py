@@ -1,5 +1,3 @@
-
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.shortcuts import render, redirect, get_object_or_404
