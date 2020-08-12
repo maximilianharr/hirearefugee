@@ -5,22 +5,53 @@ Follow us on [Instagram](https://www.instagram.com/hirearefugee/) or join our [G
 ## Overview
 This is a django webserver which provides a platform to help refugees to get a job and in contact with their local community.  
 
-## Getting Started
-
-### Installation
+## Getting Started With Docker (Recommended)
+Clone repository
 ```bash
 mkdir -p ${HOME}/workspace
 cd ${HOME}/workspace
 git clone https://github.com/maximilianharr/hirearefugee.git hirearefugee
+```
+
+Build docker container and run
+```bash
+docker build -t ${HOME}/workspace/hirearefugee/docker/india india
+docker run --user gandhi --publish 8000:8000 --volume ${HOME}/workspace:/home/gandhi/workspace -h india -it hirearefugee/india bash
+```
+
+Open the webserver in Firefox
+```bash
+firefox http://localhost:8000/
+```
+
+## Getting Started Without Docker
+
+### Installation
+Django Installation
+```bash
+mkdir -p ${HOME}/workspace
+cd ${HOME}/workspace
+git clone https://github.com/maximilianharr/hirearefugee.git hirearefugee
+sudo apt-get install python3-venv
 python3 -m venv venv_hirearefugee
 source ${HOME}/workspace/venv_hirearefugee/bin/activate
 python3 -m pip install django
+```
+
+Adding psycopg2 for GeoDjango
+```bash
+sudo apt install libpq-dev
+python3 -m pip install psycopg2
 ```
 
 ### Start Django Server Locally
 ```bash
 source ${HOME}/workspace/venv_hirearefugee/bin/activate
 python3 manage.py runserver
+```
+
+Open the webserver in Firefox  
+```bash
 firefox http://localhost:8000/
 ```
 

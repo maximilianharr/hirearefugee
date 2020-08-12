@@ -1,0 +1,12 @@
+version: '3'
+services:
+  gandhi:
+    image: hirearefugee/india
+    #build: .
+    ports:
+    - "8000:8000"
+    volumes:
+    - ${USER}/workspace:/home/gandhi/workspace
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    user: gandhi
