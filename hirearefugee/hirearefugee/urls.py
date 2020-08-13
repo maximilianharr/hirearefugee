@@ -18,14 +18,14 @@ urlpatterns = [
     path('', home_views.home, name='home'),
     path('home/', include('home.urls')),
 
-    # Message
-    path('message/', include('message.urls')),
-
     # Support
     path('support/', include('support.urls')),
 
     # Geospatial Data
     path('world/', include('world.urls')),
+
+    # UserChat
+    path('userchat/', include('userchat.urls')),
 
     # UserClass
     path('userclass/', include('userclass.urls')),
