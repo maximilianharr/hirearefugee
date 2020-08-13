@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
+    # Poject Apps
     'blog',
     'home',
     'support',
@@ -77,6 +79,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'hirearefugee.wsgi.application'
 
+# Channels
+# india_redis_broker_1 is the container name inside the docker network
+# Dockers DNS maps this name to the redis container IP address
+# See docker-compose.yml
+ASGI_APPLICATION = 'hirearefugee.routing.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('india_redis_broker_1', 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

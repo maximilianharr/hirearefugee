@@ -1,0 +1,102 @@
+<!--
+    This html renders a Multipolygon (PostGIS) provided from view.py (Django)
+-->
+{% extends 'home/base.html'%}
+
+{% block content %}
+
+
+<!--{{ world_border.mpoly.srid }}
+{{ world_border.name }}
+{{ world_border.lat }}
+{{ world_border.lon }}
+-->
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+  crossorigin=""></script>
+
+<div id="mapid" class="w-100 h-100">
+
+  <script>
+
+    var zoom = 5;
+    var lat = 51.1//{{world_border.lat}}
+    var lon = 9.8//{{world_border.lon}}
+
+    var mymap = L.map('mapid').setView([lat, lon], zoom);
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+      subdomains: ['a','b','c']
+      }).addTo(mymap);
+
+    // Add center marker
+    var marker = L.marker([lat, lon]).addTo(mymap);
+    marker.bindPopup("<b>Germany</b><br>  ").openPopup();
+
+    // Read WKT file
+    var wkt = "{{ world_border.mpoly.wkt }}"
+    wkt = wkt.substring(16, wkt.length - 3);
+    
+    // ... separate string
+    var separators = [', ', ' , ', ' ,', ','];
+    console.log(separators.join('|'));
+    var wgs84_pairs = wkt.split(new RegExp(separators.join('|'), 'g'));
+    console.log(wgs84_pairs);
+
+    // ... convert to float and push to array
+    var wgs_points = [];
+    var polygon = L.polyline([])
+
+    for (i = 0; i < wgs84_pairs.length; i++) {
+      var wgs84_pair = wgs84_pairs[i].split(' ');
+      var lon = parseFloat(wgs84_pair[0])
+      var lat = parseFloat(wgs84_pair[1])
+      if ( !isNaN(parseFloat(lat)) && !isNaN(parseFloat(lon)) ){
+        wgs_points.push( [ lat, lon ] )
+        polygon.addLatLng([lat, lon])
+      } 
+    } 
+    polygon.addTo(mymap)
+
+  </script>
+
+</div>
+
+{% endblock %}
+
+
+<!-- Lecacy Code (Using OpenLayers for map display) -->
+<!-- 
+  <body>
+    <div id="mapdiv" width="500" height="300"></div>
+    <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+    <script>
+      map = new OpenLayers.Map("mapdiv");
+      map.addLayer(new OpenLayers.Layer.OSM());
+
+      //mpoly = new OpenLayers.Geometry.MultiPolygon( {{world_border.mpoly }} )
+      //mpoly = new OpenLayers.Geometry.MultiPolygon(8.710255 47.696808, 8.678595 47.693344)
+
+      var lonLat = new OpenLayers.LonLat( {{world_border.lon}}, {{world_border.lat}} )
+      //var lonLat = new OpenLayers.LonLat( world_border.lon,world_border.lat)
+            .transform(
+              new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+              map.getProjectionObject() // to Spherical Mercator Projection
+            );
+  
+      var zoom=6;
+  
+      var markers = new OpenLayers.Layer.Markers( "Markers" );
+      map.addLayer(markers);
+  
+      markers.addMarker(new OpenLayers.Marker(lonLat));
+  
+      map.setCenter (lonLat, zoom);
+    </script>
+  </body>
+-->

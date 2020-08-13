@@ -1,12 +1,28 @@
 version: '3'
+
 services:
-  gandhi:
+  django_webserver:
     image: hirearefugee/india
-    #build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-    - "8000:8000"
+    - 8000:8000
     volumes:
-    - ${USER}/workspace:/home/gandhi/workspace
-    stdin_open: true # docker run -i
-    tty: true        # docker run -t
+    - /home/harrmax/workspace:/home/gandhi/workspace
+    #stdin_open: true # docker run -i
+    #tty: true        # docker run -t
     user: gandhi
+    # environment:
+    # DB_PASSWORD: ...
+    # key: value
+  redis_broker:
+    image: redis:5
+    ports: 
+    - 6379:6379
+#  postgres:
+#    image: postgres
+#    environment: 
+#      - POSTGRES_PASSWORD=postgres
+#volumes:
+

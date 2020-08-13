@@ -13,13 +13,13 @@ Clone repository
 mkdir -p ${HOME}/workspace
 cd ${HOME}/workspace
 git clone https://github.com/maximilianharr/hirearefugee.git hirearefugee
-docker build -t ${HOME}/workspace/hirearefugee/docker/india india
 ```
 
-### Start Django Server Locally
+### Build/pull docker images and run webserver
 Build docker container and run
 ```bash
-docker run --user gandhi --publish 8000:8000 --volume ${HOME}/workspace:/home/gandhi/workspace -h india -it hirearefugee/india bash
+cd ${HOME}/workspace/hirearefugee/docker/india
+docker-compose up
 ```
 
 Open the webserver in Firefox
