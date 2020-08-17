@@ -16,7 +16,7 @@ class UserDetails(models.Model):
     birth_date = models.DateField(null=True, blank=True)
 
     image = models.ImageField(upload_to='userclass/images', blank=True)
-    is_refugee = models.BooleanField(null=True, default=True)
+    is_refugee = models.BooleanField(null=True, default=False)
 
     # Ratings
     rating_val = models.FloatField(blank=True, default=0.0)

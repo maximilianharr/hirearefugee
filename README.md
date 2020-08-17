@@ -5,7 +5,22 @@ Follow us on [Instagram](https://www.instagram.com/hirearefugee/) or join our [G
 ## Overview
 This is a django webserver which provides a platform to help refugees to get a job and in contact with their local community.  
 
-## Getting Started With Docker (Recommended)
+## Getting Started
+
+### Prerequisites
+Our webserver is containerized. Thus, you can run it in any OS without installing any additional software :) ... except for docker and docker-compose. 
+However, this installattion guide assumes you run in Ubuntu. If you're on Windows on MAC, you'll find the docker setup online.  
+
+For details see the install.sh script in the docker folder. You can check if you have docker and docker-compose already installed via:
+```bash
+docker --version
+docker-compose --version
+```
+
+Check if docker is working:
+```bash
+docker run hello-world
+```
 
 ### Installation
 Clone repository
@@ -15,7 +30,7 @@ cd ${HOME}/workspace
 git clone https://github.com/maximilianharr/hirearefugee.git hirearefugee
 ```
 
-### Build/pull docker images and run webserver
+### Build/pull Docker Images and Run The Webserver
 Build docker container and run
 ```bash
 cd ${HOME}/workspace/hirearefugee/docker/india
@@ -27,42 +42,18 @@ Open the webserver in Firefox
 firefox http://localhost:8000/
 ```
 
-### Working
+### Working in The Current Container
 Open bash in running docker container (e.g. to create new apps)
 ```bash
 docker container ls
 docker exec -it ${CONTAINER_ID} /bin/bash
 ```
 
-## Getting Started Without Docker
-
-### Installation
-Django Installation
+### Working in New Container
+When you want to perform some shell operations (e.g. python3 manage.py makemigations/migrate) inside your docker you can do so. 
+As we typically use shell scripts as docker entrypoints (e.g. launch the webserver) you need to overwrite the --entrypoint.
 ```bash
-mkdir -p ${HOME}/workspace
-cd ${HOME}/workspace
-git clone https://github.com/maximilianharr/hirearefugee.git hirearefugee
-sudo apt-get install python3-venv
-python3 -m venv venv_hirearefugee
-source ${HOME}/workspace/venv_hirearefugee/bin/activate
-python3 -m pip install django
-```
-
-Adding psycopg2 for GeoDjango
-```bash
-sudo apt install libpq-dev
-python3 -m pip install psycopg2
-```
-
-### Start Django Server Locally
-```bash
-source ${HOME}/workspace/venv_hirearefugee/bin/activate
-python3 manage.py runserver
-```
-
-Open the webserver in Firefox  
-```bash
-firefox http://localhost:8000/
+docker run --entrypoint "/bin/bash" -u gandhi -h india -it hirearefugee/india
 ```
 
 ## Documentation
