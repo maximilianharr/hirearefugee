@@ -80,7 +80,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'hirearefugee.wsgi.application'
 
 # Channels
-# india_redis_broker_1 is the container name inside the docker network
+# all_redis_broker_1 is the container name inside the docker network
 # Dockers DNS maps this name to the redis container IP address
 # See docker-compose.yml
 ASGI_APPLICATION = 'hirearefugee.routing.application'
@@ -88,7 +88,7 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [('india_redis_broker_1', 6379)],
+            "hosts": [('all_redis_broker_1', 6379)],
         },
     },
 }
@@ -96,10 +96,21 @@ CHANNEL_LAYERS = {
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'hirearefugeedb',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'all_postgres_server_1',
+        'PORT': '5432',
     }
 }
 
