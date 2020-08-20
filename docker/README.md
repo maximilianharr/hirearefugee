@@ -28,3 +28,9 @@ Country (e.g. India)
 ### Users
 Role model (e.g. Ghandi)
 
+#### Open Shell in Docker and run Jupyterlab
+```bash
+docker exec -it atlas_atlas_1 bash
+cd /media/docker/maplearningtools/src/
+jupyter-notebook --allow-root --port 8891 --ip 0.0.0.0 --NotebookApp.token='atlas'
+```

@@ -3,12 +3,10 @@ FROM python:3
 # Add user
 RUN useradd -ms /bin/bash gandhi
 
-# Configure Django
-RUN python3 -m pip install django
-RUN python3 -m pip install pillow
-# Django chat
-RUN python3 -m pip install channels
-RUN python3 -m pip install channels_redis
+# Install python packages
+COPY requirements.txt /tmp/requirements.txt
+WORKDIR /tmp
+RUN pip3 install -r requirements.txt
 
 #RUN pip install -r requirements.txt
 CMD chmod +x /home/gandhi/workspace/hirearefugee/docker/india/init.sh

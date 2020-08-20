@@ -1,0 +1,4 @@
+channels
+channels_redis
+django
+pillow

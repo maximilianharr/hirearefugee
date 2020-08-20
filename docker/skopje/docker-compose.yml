@@ -1,0 +1,7 @@
+version: '3'
+
+  skopje:
+    image: hirearefugee/skopje
+    build:
+        context: .
+        dockerfile: Dockerfile
