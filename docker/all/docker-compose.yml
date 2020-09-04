@@ -25,7 +25,6 @@ services:
       dockerfile: Dockerfile
     restart: always
     ports:
-    - 8891:8891 # jupyter (development)
     - 5430:5432 # postgres
     environment:
       POSTGRES_USER: postgres
