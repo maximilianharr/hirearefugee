@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  
+  proxy_server:
+    image: hirearefugee/proxy_server
+    build:
+      context: .
+      dockerfile: Dockerfile
