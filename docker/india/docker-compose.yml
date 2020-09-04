@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  
+  django_webserver:
+    image: hirearefugee/india
+    build:
+      context: .
+      dockerfile: Dockerfile

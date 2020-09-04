@@ -1,0 +1,116 @@
+{% extends "home/base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-7 text-center">
+        <h1 style="color:rgb(14, 168, 179)">Love What We Are Doing?</h1>
+        <h5 style="color:rgb(112, 112, 112)">
+        <br>
+        Great! Feel free to print our flyers, go to the next accomodation for refugees, to your local municipality or your neighbour.
+        <br><br>
+        Spread the word and join our mission!
+        </h5>
+    </div>
+</div>
+
+<!-- Flyer -->
+<div class="row justify-content-center mt-5">
+    <div class="col-md-7 text-center">
+        <h3 style="color:rgb(14, 168, 179)">Share Our Flyers</h3>
+    </div>
+</div>
+
+<div class="album py-5">
+    <div class="container">
+        <div class="row">
+            <!-- First item -->
+            <div class="col-md-12">
+                <div class="card mb-4 shadow-sm">
+                <img src="{% static 'home/images/hirearefugee_flyer_front.png' %}" width="100%">
+                    <div class="card-body">
+                    <p class="card-text">
+                        Flyer Front
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Second item -->
+            <div class="col-md-12">
+                <div class="card mb-4 shadow-sm">
+                    <img src="{% static 'home/images/hirearefugee_flyer_back.png' %}" width="100%">
+                    <div class="card-body">
+                    <p class="card-text"> 
+                        Flyer Back
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+<!-- QR Codes -->
+<div class="row justify-content-center mt-5">
+    <div class="col-md-7 text-center">
+        <h3 style="color:rgb(14, 168, 179)">Share Our QR Codes</h3>
+    </div>
+</div>
+
+<div class="album py-5">
+    <div class="container">
+        <div class="row">
+            <!-- First item -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                <img src="{% static 'home/qr/http_www_hirearefugee_org_.png' %}" width="100%">
+                    <div class="card-body">
+                    <p class="card-text">
+                        <img src="{% static 'home/icons/Shake_Hands_Icon_0ea8b3.png' %}" width="50"> Website <br>
+                        https://hirearefugee.org/
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- Second item -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="{% static 'home/qr/https_www_github_com_maximilianharr_hirearefugee_.png' %}" width="100%">
+                    <div class="card-body">
+                    <p class="card-text"> 
+                        <img src="{% static 'home/icons/github_bw.svg' %}" width="50"> Github <br>
+                        https://github.com/maximilianharr/hirearefugee
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Third item -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="{% static 'home/qr/https_www_instagram_com_hirearefugee_.png' %}" width="100%">
+                    <div class="card-body">
+                    <p class="card-text">
+                        <img src="{% static 'home/icons/instagram_bw.svg' %}" width="50"> Instagram <br>
+                        https://www.instagram.com/hirearefugee/
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+{% endblock %}

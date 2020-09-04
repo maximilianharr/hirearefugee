@@ -1,0 +1,23 @@
+{% extends "home/base.html" %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <!-- Left, detailed settings -->
+    <div class="col-8">Detailed User Settings Form
+
+      {{ userdetails }}
+    </div>
+    <!-- Right setting overview-->
+    <div class="col-4">
+      <nav class="navbar navbar-light bg-light">
+        <span class="navbar-text">User Settings</span>
+      </nav>
+      <nav class="navbar navbar-light bg-light">
+        <span class="navbar-text">... Name</span>
+      </nav>
+    </div>
+  </div>
+</div>
+{% endblock %}

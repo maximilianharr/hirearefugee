@@ -1,0 +1,7 @@
+channels
+channels_redis
+django
+gunicorn
+pillow
+psycopg2
+setproctitle

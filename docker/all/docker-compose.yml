@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  
+  django_webserver:
+    image: hirearefugee/india
+    build:
+      context: ../india
+      dockerfile: Dockerfile
+    environment: 
+    - USE_GUNICORN_NGINX=${USE_GUNICORN_NGINX}
+    ports:
+    - 8000:8000
+    volumes:
+    - ${HOME}/workspace:/media/docker/workspace
+    user: gandhi
+  
+  redis_broker:
+    image: redis:5
+    ports: 
+    - 6379:6379
+
+  postgres_server:
+    image: hirearefugee/skopje
+    build:
+      context: ../skopje
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+    - 5430:5432 # postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ${HOME}/workspace:/media/docker/workspace
+      - ${HOME}/artifacts/postgres:/var/lib/postgresql/data
+  
+
+  proxy_server:
+    image: hirearefugee/proxy_server
+    build:
+      context: ../proxy_server
+      dockerfile: Dockerfile
+    ports:
+    - ${NGINX_PORT}:80 # browser
+    volumes:
+    - ${HOME}/workspace:/media/docker/workspace
+    #volumes:
+    #- django_webserver
