@@ -25,7 +25,7 @@ SECRET_KEY = '_jjhm#&qjqbm_qula%xs2(0&^qwai@2c%au&4z57%g+=-lsbno'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', '192.168.0.45', 'https://h2899980.stratoserver.net/', 'https://hirearefugee.org/']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'hirearefugee.org', 'h2899980.stratoserver.net']
 
 
 # Application definition
