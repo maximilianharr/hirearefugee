@@ -9,5 +9,5 @@ WORKDIR /tmp
 RUN pip3 install -r requirements.txt
 
 #RUN pip install -r requirements.txt
-CMD chmod +x /home/gandhi/workspace/hirearefugee/docker/india/init.sh
-ENTRYPOINT ["/home/gandhi/workspace/hirearefugee/docker/india/init.sh"]
+CMD chmod +x /media/docker/workspace/hirearefugee/docker/india/init.sh
+ENTRYPOINT ["/media/docker/workspace/hirearefugee/docker/india/init.sh"]

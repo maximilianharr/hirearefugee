@@ -4,3 +4,4 @@ django
 gunicorn
 pillow
 psycopg2
+setproctitle
