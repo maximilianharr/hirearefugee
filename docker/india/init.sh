@@ -11,7 +11,11 @@ printf "${NC}--------------------------------------------------${NC}\n"
 WEBSERVER_DIR=/media/docker/workspace/hirearefugee
 
 # Run Webserver
-cd ${WEBSERVER_DIR}/docker/india/bin
-./gunicorn_start
-#gunicorn hirearefugee.wsgi:application --bind 0.0.0.0:8000
-#python3 ${WEBSERVER_DIR}/hirearefugee/manage.py runserver 0.0.0.0:8000
+
+if [ ${USE_GUNICORN_NGINX} == "true" ]; then
+
+    cd ${WEBSERVER_DIR}/docker/india/bin
+    ./gunicorn_start
+else
+    python3 ${WEBSERVER_DIR}/hirearefugee/manage.py runserver 0.0.0.0:8000
+fi
