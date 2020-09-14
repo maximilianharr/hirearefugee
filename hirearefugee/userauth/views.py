@@ -1,4 +1,4 @@
-
+from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -6,7 +6,11 @@ from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.shortcuts import render, redirect, get_object_or_404
 
+
 def signupuser(request):
+
+    messages.add_message(request, messages.WARNING, 'We are still in alpha testing and not production ready.\\nFeel free to test the server and play around :).\\nCaution: Your data may be lost or exposed at this stage!')
+
     if request.method == 'GET':
         return render(request, 'userauth/signupuser.html', {'form':UserCreationForm()})
     else:

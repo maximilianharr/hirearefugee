@@ -1,0 +1,14 @@
+#footer {
+    color: rgb(156, 156, 156);
+    position:absolute;
+    bottom:0;
+    width:100%;
+    text-align: center;
+    height:30px;
+}
+#header {
+    padding:10px;
+}
+#footerlink {
+    color: rgb(156, 156, 156);
+}

@@ -1,8 +1,9 @@
 {% load static %}
 <html lang="en">
+<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}"/>
 
 <!-- Important Note (e.g. Alpha Testing) -->
-<div class="p-1 mb-0 bg-info text-white text-center">Alpha Testing!</div>
+<div class="p-1 mb-0 bg-info text-white text-center">Alpha Testing!<br>This site is still under development!</div>
 
 <!-- Misc -->
 <head>
@@ -134,8 +135,24 @@
 </div>
 </nav>
 
-<!-- Vertival line -->
+<!-- Vertical line -->
 <hr style="height:0.5px; background-color:rgb(255, 255, 255); margin-top: 0.0rem; margin-bottom: 0.0rem;">
+
+<!-- Alert messages -->
+{% if messages %}
+
+<ul class="messages">
+    {% for message in messages %}
+
+    <!-- Alert box about alpha testing -->
+    <script>
+        alert( "{{ message }}" );
+    </script>
+
+    {% endfor %}
+</ul>
+
+{% endif %}
 
 {% block content %}{% endblock %}
 
@@ -144,5 +161,15 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+<div id="footer">
+    <a class="link" id="footerlink" href="{% url 'home:disclaimer' %}">disclaimer</a> 
+    <a class="link" id="footerlink" href="{% url 'home:cookies' %}">cookies</a>
+    <a class="link" id="footerlink" href="{% url 'home:agb' %}">agb</a>
+    <a class="link" id="footerlink" href="{% url 'home:privacy' %}">privacy</a>
+    <a class="link" id="footerlink" href="{% url 'home:imprint' %}">imprint</a>
+</div>
+
 </body>
 </html>
