@@ -8,7 +8,7 @@ WS_ROOT=/media/docker/workspace/hirearefugee
 DJANGODIR=${WS_ROOT}/hirearefugee
 
 # we will communicte using this unix socket
-SOCKFILE=${WS_ROOT}/docker/india/run/gunicorn.sock
+SOCKFILE=${WS_ROOT}/docker/django_webserver/run/gunicorn.sock
 
 # the user to run as
 USER=gandhi

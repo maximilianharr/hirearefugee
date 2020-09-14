@@ -3,9 +3,9 @@ version: '3'
 services:
   
   django_webserver:
-    image: hirearefugee/india
+    image: hirearefugee/django_webserver
     build:
-      context: ../india
+      context: ../django_webserver
       dockerfile: Dockerfile
     environment: 
     - USE_GUNICORN_NGINX=${USE_GUNICORN_NGINX}
@@ -21,9 +21,9 @@ services:
     - 6379:6379
 
   postgres_server:
-    image: hirearefugee/skopje
+    image: hirearefugee/postgres_server
     build:
-      context: ../skopje
+      context: ../postgres_server
       dockerfile: Dockerfile
     restart: always
     ports:
@@ -36,10 +36,10 @@ services:
       - ${HOME}/artifacts/postgres:/var/lib/postgresql/data
   
 
-  proxy_server:
-    image: hirearefugee/proxy_server
+  nginx_proxy:
+    image: hirearefugee/nginx_proxy
     build:
-      context: ../proxy_server
+      context: ../nginx_proxy
       dockerfile: Dockerfile
     ports:
     - ${NGINX_PORT}:80 # browser

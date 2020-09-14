@@ -2,8 +2,8 @@ version: '3'
 
 services:
   
-  django_webserver:
-    image: hirearefugee/india
+  nginx_proxy:
+    image: hirearefugee/nginx_proxy
     build:
       context: .
       dockerfile: Dockerfile

@@ -14,7 +14,7 @@ WEBSERVER_DIR=/media/docker/workspace/hirearefugee
 
 if [ ${USE_GUNICORN_NGINX} == "true" ]; then
 
-    cd ${WEBSERVER_DIR}/docker/india/bin
+    cd ${WEBSERVER_DIR}/docker/django_webserver/bin
     ./gunicorn_start
 else
     python3 ${WEBSERVER_DIR}/hirearefugee/manage.py runserver 0.0.0.0:8000

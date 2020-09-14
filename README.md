@@ -7,8 +7,7 @@ Follow us on [Instagram](https://www.instagram.com/hirearefugee/) or join our [G
 ## Getting Started
 
 ### Prerequisites
-Our webserver is completely containerized. Thus, you can run it in any OS (preferebly Ubuntu 18.04 / 20.04) without installing any additional software :) ... except for docker and docker-compose. 
-If you run on Ubuntu you can use [this script](https://github.com/maximilianharr/code_snippets/blob/master/sh/install_docker.sh) to install docker and docker-compose.
+Our webserver is completely containerized. If you run on Ubuntu you can use [this script](https://github.com/maximilianharr/code_snippets/blob/master/sh/install_docker.sh) to install docker and docker-compose.
 
 You can check if you have docker and docker-compose already installed via:
 ```bash
@@ -37,7 +36,7 @@ docker-compose build
 docker-compose up
 ```
 
-#### Create Database and Migrate
+#### Create Database and Migrate (only required once)
 ```bash
 docker exec -it all_postgres_server_1 bash -c 'createdb -U postgres -h localhost -p 5432 hirearefugeedb'
 docker exec -it all_django_webserver_1 bash -c 'python3 /media/docker/workspace/hirearefugee/hirearefugee/manage.py makemigrations'
@@ -47,7 +46,7 @@ docker exec -it all_django_webserver_1 bash -c 'python3 /media/docker/workspace/
 #### Open Django in Browser
 Open the webserver in Firefox
 ```bash
-firefox http://localhost:8000/
+firefox http://localhost:8888/
 ```
 
 ## Debugging
