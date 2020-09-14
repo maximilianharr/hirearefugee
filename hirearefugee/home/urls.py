@@ -11,6 +11,5 @@ urlpatterns = [
     path('community/', views.community, name='community'),
     path('disclaimer/', views.disclaimer, name='disclaimer'),
     path('imprint/', views.imprint, name='imprint'),
-    path('privacy/', views.privacy, name='privacy'),
     path('testhtml/', views.testhtml, name='testhtml'),
 ]

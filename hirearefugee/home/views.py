@@ -22,8 +22,5 @@ def home(request):
 def imprint(request):
     return render(request, 'home/imprint.html')
 
-def privacy(request):
-    return render(request, 'home/cookies.html')
-
 def testhtml(request):
     return render(request, 'home/testhtml.html')
